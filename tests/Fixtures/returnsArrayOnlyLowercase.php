@@ -9,5 +9,5 @@ return [
     'inside',
     'lowercase',
     'lower',
-    'case'
+    'case',
 ];
