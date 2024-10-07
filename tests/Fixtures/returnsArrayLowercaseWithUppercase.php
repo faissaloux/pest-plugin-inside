@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 return [
-    'faissAloux',
+    '',
+    'f@issA!oux',
     'pest',
     'plugin',
     'inside',

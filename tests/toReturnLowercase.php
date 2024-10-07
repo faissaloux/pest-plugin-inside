@@ -21,3 +21,8 @@ it('fails with not', function (): void {
     expect('tests/Fixtures/returnsArrayOnlyLowercase.php')
         ->not->toReturnLowercase();
 })->throws(ExpectationFailedException::class);
+
+it('fails when file does not exist', function (): void {
+    expect('tests/Fixtures/notExist.php')
+        ->toReturnLowercase();
+})->throws(ExpectationFailedException::class);
