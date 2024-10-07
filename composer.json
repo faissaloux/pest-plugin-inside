@@ -11,6 +11,12 @@
         "plugin",
         "content"
     ],
+    "authors": [
+        {
+            "name": "faissaloux",
+            "email": "contact@faissaloux.com"
+        }
+    ],
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -25,12 +31,6 @@
             "Tests\\": "tests/"
         }
     },
-    "authors": [
-        {
-            "name": "faissaloux",
-            "email": "contact@faissaloux.com"
-        }
-    ],
     "require": {
         "php": "^8.1",
         "pestphp/pest": "^2.0"
