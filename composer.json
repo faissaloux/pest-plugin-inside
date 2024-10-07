@@ -1,0 +1,69 @@
+{
+    "name": "faissaloux/pest-plugin-inside",
+    "description": "Files content plugin for Pest PHP",
+    "keywords": [
+        "php",
+        "framework",
+        "pest",
+        "unit",
+        "test",
+        "testing",
+        "plugin",
+        "content"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Faissaloux\\PestInside\\": "src/"
+        },
+        "files": [
+            "src/Autoload.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "faissaloux",
+            "email": "contact@faissaloux.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "pestphp/pest": "^2.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.11.0",
+        "rector/rector": "^1.2.0",
+        "laravel/pint": "^1.16.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "refactor": "rector",
+        "lint": "pint",
+        "test:refactor": "rector --dry-run",
+        "test:lint": "pint --test",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": [
+            "@putenv XDEBUG_MODE=coverage",
+            "pest --coverage --colors=always -v"
+        ],
+        "test": [
+            "@test:refactor",
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ]
+    }
+}
