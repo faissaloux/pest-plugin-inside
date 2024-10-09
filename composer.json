@@ -23,6 +23,7 @@
             "Faissaloux\\PestInside\\": "src/"
         },
         "files": [
+            "src/helpers.php",
             "src/Autoload.php"
         ]
     },

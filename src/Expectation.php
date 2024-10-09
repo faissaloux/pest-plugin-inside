@@ -14,6 +14,7 @@ expect()->extend(
 
             if ($files = scandir($files[0])) {
                 $files = array_diff($files, ['.', '..']);
+                $files = array_filter($files, 'isPhp');
                 $files = array_map(fn (string $file): string => $directory.DIRECTORY_SEPARATOR.$file, $files);
             }
 
