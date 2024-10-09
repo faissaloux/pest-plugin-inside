@@ -30,5 +30,8 @@
     <include>
       <directory suffix=".php">./src</directory>
     </include>
+    <exclude>
+      <file>./src/Autoload.php</file>
+    </exclude>
   </source>
 </phpunit>
