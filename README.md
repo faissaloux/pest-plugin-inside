@@ -42,3 +42,11 @@ return [
 ```php
 expect('notlowercase.php')->toReturnLowercase();
 ```
+
+### Scan directory
+
+You can scan all directory files at once
+
+```php
+expect('directory')->toReturnLowercase();
+```
