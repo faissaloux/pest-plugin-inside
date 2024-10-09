@@ -12,7 +12,7 @@ it('passes with not', function (): void {
         ->not->toReturnLowercase();
 });
 
-it('passes when directory is e mpty', function (): void {
+it('passes when directory is empty', function (): void {
     expect('tests/Fixtures/empty')
         ->toReturnLowercase();
 });
