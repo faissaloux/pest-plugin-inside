@@ -2,7 +2,7 @@
 
 function isPhp(string $file): bool
 {
-    $exploded = explode(".", $file);
+    $exploded = explode('.', $file);
 
-    return end($exploded) === "php";
+    return end($exploded) === 'php';
 }
