@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.1.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.2.0...main)
+
+## [v1.2.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.1.0...v1.2.0) - 2024-10-10
+### Added
+* Support pest3 by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/3
 
 ## [v1.1.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.0.0...v1.1.0) - 2024-10-09
 ### Added
