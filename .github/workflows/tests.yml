@@ -30,7 +30,7 @@ jobs:
 
     - name: Install PHP dependencies
       run: |
-        composer require "pestphp/pest:${{ matrix.pest }}" --no-interaction --no-update
+        composer require "pestphp/pest:^${{ matrix.pest }}" --no-interaction --no-update
         composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
 
     - name: Unit Tests
