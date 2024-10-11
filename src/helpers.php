@@ -7,7 +7,7 @@ function isDirOrPhp(string $maybeFile): bool
 
 function isDir(string $maybeDir): bool
 {
-    return !str_contains($maybeDir, '.');
+    return ! str_contains($maybeDir, '.');
 }
 
 function isPhp(string $file): bool
@@ -28,7 +28,7 @@ function getFilesIn(string $directory, ?int $depth = null): array
         $files = array_diff($files, ['.', '..']);
         $files = array_filter($files, 'isDirOrPhp');
 
-        foreach($files as $file) {
+        foreach ($files as $file) {
             if (isDir($file)) {
                 if (is_null($depth) || $depth > 0) {
                     $allFiles = array_merge(getFilesIn($directory.DIRECTORY_SEPARATOR.$file, is_null($depth) ? $depth : $depth - 1), $allFiles);
