@@ -19,3 +19,9 @@ it('gets all php files in directory depth 1', function (): void {
 
     expect($files)->toBeArray()->toHaveCount(6);
 });
+
+it('gets all php files in directory and subdirectories on negative depth', function (): void {
+    $files = getFilesIn('tests/Fixtures', depth: -4);
+
+    expect($files)->toBeArray()->toHaveCount(7);
+});

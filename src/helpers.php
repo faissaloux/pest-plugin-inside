@@ -20,7 +20,7 @@ function isPhp(string $file): bool
 /**
  * @return array<string>
  */
-function getFilesIn(string $directory, ?int $depth = null): array
+function getFilesIn(string $directory, int $depth = -1): array
 {
     $allFiles = [];
 
@@ -30,8 +30,9 @@ function getFilesIn(string $directory, ?int $depth = null): array
 
         foreach ($files as $file) {
             if (isDir($file)) {
-                if (is_null($depth) || $depth > 0) {
-                    $allFiles = array_merge(getFilesIn($directory.DIRECTORY_SEPARATOR.$file, is_null($depth) ? $depth : $depth - 1), $allFiles);
+                if ($depth !== 0) {
+                    $deeperFiles = getFilesIn($directory.DIRECTORY_SEPARATOR.$file, $depth < 0 ? $depth : $depth - 1);
+                    $allFiles = array_merge($deeperFiles, $allFiles);
                 }
             } else {
                 $allFiles[] = $directory.DIRECTORY_SEPARATOR.$file;

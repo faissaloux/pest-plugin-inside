@@ -6,7 +6,7 @@ use Pest\Expectation as PestExpectation;
 
 expect()->extend(
     'toReturnLowercase',
-    function (?int $depth = null): PestExpectation {
+    function (int $depth = -1): PestExpectation {
         $files = [$this->value];
 
         if (is_dir($files[0])) {
