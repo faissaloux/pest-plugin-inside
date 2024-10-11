@@ -45,8 +45,23 @@ expect('notlowercase.php')->toReturnLowercase();
 
 ### Scan directory
 
-You can scan all directory files at once
+```bash
+directory
+├── file.js
+├── file.php
+├── subdirectory
+    ├── file.json
+    ├── file1.php
+    ├── file2.php
+```
 
+- To scan all the php files in `directory` and all its subdirectories (`file.php`, `file1.php` and `file2.php`), we can use:
 ```php
 expect('directory')->toReturnLowercase();
 ```
+
+- We can also specify the scan depth using `depth`.
+```php
+expect('directory')->toReturnLowercase(depth:0);
+```
+In this case it will only scan direct php file which is `file.php`.
