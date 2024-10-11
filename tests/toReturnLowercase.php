@@ -19,7 +19,7 @@ it('passes when directory is empty', function (): void {
 
 it('passes when all directory files content are lowercase', function (): void {
     expect('tests/Fixtures/shouldAllBeLowercase')
-        ->toReturnLowercase();
+        ->toReturnLowercase(depth: 0);
 });
 
 it('fails', function (): void {
@@ -44,5 +44,10 @@ it('fails when directory does not exist', function (): void {
 
 it('fails when not all directory files content are lowercase', function (): void {
     expect('tests/Fixtures/shouldAllBeLowercase1')
+        ->toReturnLowercase();
+})->throws(ExpectationFailedException::class);
+
+it('fails when not all subdirectories files content are lowercase', function (): void {
+    expect('tests/Fixtures/shouldAllBeLowercase')
         ->toReturnLowercase();
 })->throws(ExpectationFailedException::class);

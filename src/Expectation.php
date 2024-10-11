@@ -6,17 +6,11 @@ use Pest\Expectation as PestExpectation;
 
 expect()->extend(
     'toReturnLowercase',
-    function (): PestExpectation {
+    function (?int $depth = null): PestExpectation {
         $files = [$this->value];
 
         if (is_dir($files[0])) {
-            $directory = $files[0];
-
-            if ($files = scandir($files[0])) {
-                $files = array_diff($files, ['.', '..']);
-                $files = array_filter($files, 'isPhp');
-                $files = array_map(fn (string $file): string => $directory.DIRECTORY_SEPARATOR.$file, $files);
-            }
+            $files = getFilesIn($files[0], $depth);
 
             if ($files === []) {
                 expect(true)->toBeTrue();
