@@ -35,7 +35,7 @@ it('fails with not', function (): void {
 it('fails when file does not exist', function (): void {
     expect('tests/Fixtures/notExist.php')
         ->toReturnLowercase();
-})->throws(ExpectationFailedException::class);
+})->throws(ExpectationFailedException::class, 'tests/Fixtures/notExist.php not found');
 
 it('fails when directory does not exist', function (): void {
     expect('tests/Fixtures/notExist')
@@ -51,3 +51,11 @@ it('fails when not all subdirectories files content are lowercase', function ():
     expect('tests/Fixtures/shouldAllBeLowercase')
         ->toReturnLowercase();
 })->throws(ExpectationFailedException::class);
+
+it('displays word detected', function (): void {
+    expect('tests/Fixtures/shouldAllBeLowercase')->toReturnLowercase();
+})->throws(ExpectationFailedException::class, 'Not lowercase word detected: loWer');
+
+it('displays file where error detected', function (): void {
+    expect('tests/Fixtures/shouldAllBeLowercase')->toReturnLowercase();
+})->throws(ExpectationFailedException::class, 'notAllLowerCase.php');

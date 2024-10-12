@@ -38,7 +38,7 @@ expect()->extend(
                     continue;
                 }
 
-                expect($word)->toBeLowercase("Not lowercase word found: $content[$key]");
+                expect($word)->toBeLowercase("Not lowercase word detected: $content[$key] in $file");
             }
         }
 
