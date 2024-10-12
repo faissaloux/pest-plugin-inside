@@ -38,9 +38,7 @@ function getFilesIn(string $directory, int $depth = -1): array
                 $allFiles[] = $directory.DIRECTORY_SEPARATOR.$file;
             }
         }
-
-        return $allFiles;
     }
 
-    return [];
+    return $allFiles;
 }
