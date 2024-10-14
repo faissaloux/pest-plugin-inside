@@ -5,6 +5,21 @@ This plugin checks what's inside the files.
 
 [![Tests](https://github.com/faissaloux/pest-plugin-inside/actions/workflows/tests.yml/badge.svg)](https://github.com/faissaloux/pest-plugin-inside/actions/workflows/tests.yml) ![Codecov](https://img.shields.io/codecov/c/github/faissaloux/pest-plugin-inside) ![Packagist Version](https://img.shields.io/packagist/v/faissaloux/pest-plugin-inside) ![Packagist License](https://img.shields.io/packagist/l/faissaloux/pest-plugin-inside)
 
+## Available Methods
+### toReturnLowercase
+Make sure a file or directory files returns an array with all lowercase values.
+```php
+expect('file.php')->toReturnLowercase();
+```
+
+### toReturnUnique
+Make sure a file or directory files returns an array with unique values.
+```php
+expect('file.php')->toReturnUnique();
+```
+
+----
+
 ### Success
 
 ```php
