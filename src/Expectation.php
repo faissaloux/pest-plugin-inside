@@ -5,6 +5,39 @@ declare(strict_types=1);
 use Pest\Expectation as PestExpectation;
 
 expect()->extend(
+    'toReturnUnique',
+    function (int $depth = -1): PestExpectation {
+        $files = [$this->value];
+
+        if (is_dir($files[0])) {
+            $files = getFilesIn($files[0], $depth);
+
+            if ($files === []) {
+                expect(true)->toBeTrue();
+
+                return $this;
+            }
+        }
+
+        foreach ((array) $files as $file) {
+            if (! file_exists($file)) {
+                expect(true)->toBeFalse("$file not found!");
+            }
+
+            $content = include $file;
+
+            expect($content)->toBeArray();
+
+            $duplicates = array_diff_assoc($content, array_unique($content));
+
+            expect($duplicates)->toBeEmpty('Duplicates found:'.implode(',', $duplicates)." in $file");
+        }
+
+        return $this;
+    }
+);
+
+expect()->extend(
     'toReturnLowercase',
     function (int $depth = -1): PestExpectation {
         $files = [$this->value];
