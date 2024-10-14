@@ -5,12 +5,12 @@ declare(strict_types=1);
 return [
     '',
     'f@issa!oux',
-    'pestphp',
+    1,
     'pest',
-    'plugin inside',
     'plugin',
     'inside',
-    'lowercase',
-    'lower',
-    'case',
+    'duplicate',
+    'word',
+    1,
+    'duplicate',
 ];

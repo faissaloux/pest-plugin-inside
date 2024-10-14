@@ -10,7 +10,6 @@ return [
     'plugin inside',
     'plugin',
     'inside',
-    'lowercase',
-    'lower',
-    'case',
+    'unique',
+    'word',
 ];

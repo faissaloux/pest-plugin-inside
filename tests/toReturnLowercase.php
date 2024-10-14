@@ -18,7 +18,7 @@ it('passes when directory is empty', function (): void {
 });
 
 it('passes when all directory files content are lowercase', function (): void {
-    expect('tests/Fixtures/shouldAllBeLowercase')
+    expect('tests/Fixtures/directory')
         ->toReturnLowercase(depth: 0);
 });
 
@@ -43,19 +43,19 @@ it('fails when directory does not exist', function (): void {
 })->throws(ExpectationFailedException::class);
 
 it('fails when not all directory files content are lowercase', function (): void {
-    expect('tests/Fixtures/shouldAllBeLowercase1')
+    expect('tests/Fixtures/directory1')
         ->toReturnLowercase();
 })->throws(ExpectationFailedException::class);
 
 it('fails when not all subdirectories files content are lowercase', function (): void {
-    expect('tests/Fixtures/shouldAllBeLowercase')
+    expect('tests/Fixtures/directory')
         ->toReturnLowercase();
 })->throws(ExpectationFailedException::class);
 
 it('displays word detected', function (): void {
-    expect('tests/Fixtures/shouldAllBeLowercase')->toReturnLowercase();
+    expect('tests/Fixtures/directory')->toReturnLowercase();
 })->throws(ExpectationFailedException::class, 'Not lowercase word detected: loWer');
 
 it('displays file where error detected', function (): void {
-    expect('tests/Fixtures/shouldAllBeLowercase')->toReturnLowercase();
+    expect('tests/Fixtures/directory')->toReturnLowercase();
 })->throws(ExpectationFailedException::class, 'notAllLowerCase.php');
