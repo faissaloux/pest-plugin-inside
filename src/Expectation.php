@@ -8,33 +8,59 @@ use Pest\Expectation as PestExpectation;
 
 final class Expectation
 {
-    public function __construct(private string $value) {}
+    /**
+     * @var array<string>
+     */
+    private array $files;
+
+    public function __construct(private string $value)
+    {
+        $this->files = [$value];
+    }
+
+    private function fetchFilesIfDirectory(int $depth): void
+    {
+        if (is_dir($this->files[0])) {
+            $this->files = getFilesIn($this->files[0], $depth);
+        }
+    }
+
+    private function checkFileExistence(string $file): void
+    {
+        if (! file_exists($file)) {
+            expect(true)->toBeFalse("$file not found!");
+        }
+    }
+
+    /**
+     * @return array<string>
+     */
+    private function getContentFrom(string $file): array
+    {
+        $content = include $file;
+
+        expect($content)->toBeArray();
+
+        return $content;
+    }
 
     /**
      * @return PestExpectation<string>
      */
     public function toReturnLowercase(int $depth = -1): PestExpectation
     {
-        $files = [$this->value];
-    
-        if (is_dir($files[0])) {
-            $files = getFilesIn($files[0], $depth);
+        $this->fetchFilesIfDirectory($depth);
 
-            if ($files === []) {
-                expect(true)->toBeTrue();
+        if ($this->files === []) {
+            expect(true)->toBeTrue();
 
-                return new PestExpectation($this->value);
-            }
+            return new PestExpectation($this->value);
         }
 
-        foreach ((array) $files as $file) {
-            if (! file_exists($file)) {
-                expect(true)->toBeFalse("$file not found!");
-            }
+        foreach ($this->files as $file) {
+            $this->checkFileExistence($file);
 
-            $content = include $file;
-
-            expect($content)->toBeArray();
+            $content = $this->getContentFrom($file);
 
             // Clean up content from numerics and special characters.
             $cleanContent = array_map(function (string $word): string {
@@ -56,27 +82,20 @@ final class Expectation
     /**
      * @return PestExpectation<string>
      */
-    public function toReturnUnique(int $depth = -1): PestExpectation {
-        $files = [$this->value];
-    
-        if (is_dir($files[0])) {
-            $files = getFilesIn($files[0], $depth);
+    public function toReturnUnique(int $depth = -1): PestExpectation
+    {
+        $this->fetchFilesIfDirectory($depth);
 
-            if ($files === []) {
-                expect(true)->toBeTrue();
+        if ($this->files === []) {
+            expect(true)->toBeTrue();
 
-                return new PestExpectation($this->value);
-            }
+            return new PestExpectation($this->value);
         }
 
-        foreach ((array) $files as $file) {
-            if (! file_exists($file)) {
-                expect(true)->toBeFalse("$file not found!");
-            }
+        foreach ($this->files as $file) {
+            $this->checkFileExistence($file);
 
-            $content = include $file;
-
-            expect($content)->toBeArray();
+            $content = $this->getContentFrom($file);
 
             $duplicates = array_diff_assoc($content, array_unique($content));
 
@@ -85,5 +104,4 @@ final class Expectation
 
         return new PestExpectation($this->value);
     }
-        
 }
