@@ -2,6 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Faissaloux\PestInside;
+use Faissaloux\PestInside\Expectation;
+use Pest\Expectation as PestExpectation;
 
-require_once __DIR__.'/Expectation.php';
+$expectations = get_class_methods(Expectation::class);
+$expectations = array_filter($expectations, fn ($function): bool => str_starts_with($function, 'toReturn'));
+
+foreach ($expectations as $expectation) {
+    expect()->extend(
+        $expectation,
+        function (int $depth = -1) use ($expectation): PestExpectation {
+            if (is_callable($callback = [new Expectation($this->value), $expectation])) {
+                call_user_func($callback, ...func_get_args());
+            }
+
+            return $this;
+        }
+    );
+}

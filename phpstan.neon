@@ -5,4 +5,3 @@ parameters:
 
     ignoreErrors:
         - "#Undefined variable: \\$this#"
-        - "#Variable \\$this might not be defined#"
