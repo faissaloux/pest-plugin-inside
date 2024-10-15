@@ -18,6 +18,12 @@ Make sure a file or directory files returns an array with unique values.
 expect('file.php')->toReturnUnique();
 ```
 
+### toReturnSingleWords
+Make sure a file or directory files returns an array with single words.
+```php
+expect('file.php')->toReturnSingleWords();
+```
+
 ----
 
 ### Success

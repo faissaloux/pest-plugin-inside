@@ -6,6 +6,7 @@ return [
     '',
     'f@issa!oux',
     'pest',
+    'plugin inside',
     'plugin',
     'inside',
     'duplicate',
