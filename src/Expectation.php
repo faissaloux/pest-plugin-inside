@@ -99,7 +99,35 @@ final class Expectation
 
             $duplicates = array_diff_assoc($content, array_unique($content));
 
-            expect($duplicates)->toBeEmpty('Duplicates found:'.implode(',', $duplicates)." in $file");
+            expect($duplicates)->toBeEmpty('Duplicates found: '.implode(',', $duplicates)." in $file");
+        }
+
+        return new PestExpectation($this->value);
+    }
+
+    /**
+     * @return PestExpectation<string>
+     */
+    public function toReturnSingleWords(int $depth = -1): PestExpectation
+    {
+        $this->fetchFilesIfDirectory($depth);
+
+        if ($this->files === []) {
+            expect(true)->toBeTrue();
+
+            return new PestExpectation($this->value);
+        }
+
+        foreach ($this->files as $file) {
+            $this->checkFileExistence($file);
+
+            $content = $this->getContentFrom($file);
+
+            $notSingle = array_filter($content, function (string $word): bool {
+                return str_contains(trim($word), ' ');
+            });
+
+            expect($notSingle)->toBeEmpty('Not single words detected: '.implode(',', $notSingle)." in $file");
         }
 
         return new PestExpectation($this->value);
