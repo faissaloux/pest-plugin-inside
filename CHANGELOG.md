@@ -1,4 +1,23 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.2.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.4.0...main)
+
+## [v1.4.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.3.0...v1.4.0) - 2024-10-17
+### Added
+* php8.4 support by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/10
+* `toReturnSingleWords()` by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/9
+* `toReturnUnique()` by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/7
+
+### Refactor
+* Refactor expectations by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/8
+
+
+## [v1.3.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.2.0...v1.3.0) - 2024-10-13
+### Added
+* Scan deep directories by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/4
+* Display the file where error was detected by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/5
+
+### Tests
+* helpers tests by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/6
+
 
 ## [v1.2.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.1.0...v1.2.0) - 2024-10-10
 ### Added
