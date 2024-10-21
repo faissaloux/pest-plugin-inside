@@ -7,13 +7,12 @@ namespace Faissaloux\PestInside;
 trait Investigator
 {
     /**
-     * @param array<string> $array
-     * 
+     * @param  array<string>  $array
      * @return array<string>
      */
     private function lowercasesIn(array $array): array
     {
-        $notLowerCase = [];
+        $unwanted = [];
 
         foreach ($array as $word) {
             if ($word === '') {
@@ -21,16 +20,15 @@ trait Investigator
             }
 
             if (! ctype_lower(preg_replace('/[^A-Za-z]/', '', $word))) {
-                array_push($notLowerCase, $word);
+                $unwanted[] = $word;
             }
         }
 
-        return $notLowerCase;
+        return $unwanted;
     }
 
     /**
-     * @param array<string> $array
-     * 
+     * @param  array<string>  $array
      * @return array<string>
      */
     private function duplicatesIn(array $array): array
@@ -39,8 +37,7 @@ trait Investigator
     }
 
     /**
-     * @param array<string> $array
-     * 
+     * @param  array<string>  $array
      * @return array<string>
      */
     private function singleWordsIn(array $array): array

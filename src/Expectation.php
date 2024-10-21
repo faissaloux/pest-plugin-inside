@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Faissaloux\PestInside;
 
-use Faissaloux\PestInside\Investigator;
-
 final class Expectation extends Inside
 {
     use Investigator;
