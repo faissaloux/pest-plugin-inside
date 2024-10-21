@@ -47,7 +47,7 @@ class Inside
     /**
      * @return PestExpectation<string>
      */
-    protected function applyOnDirectory(int $depth, callable $callback): PestExpectation
+    protected function applyOnDirectory(int $depth, callable $callback, string $message): PestExpectation
     {
         $this->fetchFilesIfDirectory($depth);
 
@@ -62,7 +62,9 @@ class Inside
 
             $content = $this->getContentFrom($file);
 
-            $callback($file, $content);
+            $unwanted = $callback($content);
+
+            expect($unwanted)->toBeEmpty("$message: ".implode(', ', $unwanted)." in $file");
         }
 
         return new PestExpectation($this->value);

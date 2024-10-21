@@ -60,7 +60,7 @@ it('displays found duplicate', function (): void {
 it('displays multiple found duplicates', function (): void {
     expect('tests/Fixtures/returnsMultipleDuplicates.php')
         ->toReturnUnique();
-})->throws(ExpectationFailedException::class, '1,duplicate');
+})->throws(ExpectationFailedException::class, '1, duplicate');
 
 it('displays file where duplicate found', function (): void {
     expect('tests/Fixtures/returnsDuplicates.php')
