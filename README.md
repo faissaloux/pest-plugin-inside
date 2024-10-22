@@ -37,6 +37,10 @@ return [
     'lower',
     'case',
     'lowercase',
+    'array' => [
+        'lower',
+        'case',
+    ],
 ];
 
 ```

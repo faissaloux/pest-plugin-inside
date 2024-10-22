@@ -7,7 +7,7 @@ namespace Faissaloux\PestInside;
 trait Investigator
 {
     /**
-     * @param  array<string>  $array
+     * @param  array<string|array<string>>  $array
      * @return array<string>
      */
     private function lowercasesIn(array $array): array
@@ -16,6 +16,12 @@ trait Investigator
 
         foreach ($array as $word) {
             if ($word === '') {
+                continue;
+            }
+
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->lowercasesIn($word));
+
                 continue;
             }
 
@@ -28,20 +34,51 @@ trait Investigator
     }
 
     /**
-     * @param  array<string>  $array
+     * @param  array<string|array<string>>  $array
      * @return array<string>
      */
     private function duplicatesIn(array $array): array
     {
-        return array_diff_assoc($array, array_unique($array));
+        $unwanted = [];
+        $unique = [];
+
+        foreach ($array as $word) {
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->duplicatesIn($word));
+
+                continue;
+            }
+
+            if (! in_array($word, $unique)) {
+                $unique[] = $word;
+            } else {
+                $unwanted[] = $word;
+            }
+        }
+
+        return $unwanted;
     }
 
     /**
-     * @param  array<string>  $array
+     * @param  array<string|array<string>>  $array
      * @return array<string>
      */
     private function singleWordsIn(array $array): array
     {
-        return array_filter($array, fn (string $word): bool => str_contains(trim($word), ' '));
+        $unwanted = [];
+
+        foreach ($array as $word) {
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->singleWordsIn($word));
+
+                continue;
+            }
+
+            if (str_contains(trim((string) $word), ' ')) {
+                $unwanted[] = $word;
+            }
+        }
+
+        return $unwanted;
     }
 }
