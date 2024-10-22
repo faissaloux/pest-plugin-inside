@@ -12,6 +12,11 @@ it('passes with not', function (): void {
         ->not->toReturnUnique();
 });
 
+it('passes when all nested arrays content is unique', function (): void {
+    expect('tests/Fixtures/returnsNestedUnique.php')
+        ->toReturnUnique();
+});
+
 it('passes when directory is empty', function (): void {
     expect('tests/Fixtures/empty')
         ->toReturnUnique();
@@ -31,6 +36,11 @@ it('fails with not', function (): void {
     expect('tests/Fixtures/returnsUnique.php')
         ->not->toReturnUnique();
 })->throws(ExpectationFailedException::class);
+
+it('fails when not all nested arrays content is unique', function (): void {
+    expect('tests/Fixtures/returnsNestedNotUnique.php')
+        ->toReturnUnique();
+})->throws(ExpectationFailedException::class, 'Duplicates detected: pest, inside');
 
 it('fails when file does not exist', function (): void {
     expect('tests/Fixtures/notExist.php')

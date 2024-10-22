@@ -34,12 +34,29 @@ trait Investigator
     }
 
     /**
-     * @param  array<string>  $array
+     * @param  array<string|array<string>>  $array
      * @return array<string>
      */
     private function duplicatesIn(array $array): array
     {
-        return array_diff_assoc($array, array_unique($array));
+        $unwanted = [];
+        $unique = [];
+
+        foreach ($array as $word) {
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->duplicatesIn($word));
+
+                continue;
+            }
+
+            if (!in_array($word, $unique)) {
+                $unique[] = $word;
+            } else {
+                $unwanted[] = $word;
+            }
+        }
+
+        return $unwanted;
     }
 
     /**
