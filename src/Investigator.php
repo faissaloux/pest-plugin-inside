@@ -60,11 +60,25 @@ trait Investigator
     }
 
     /**
-     * @param  array<string>  $array
+     * @param  array<string|array<string>>  $array
      * @return array<string>
      */
     private function singleWordsIn(array $array): array
     {
-        return array_filter($array, fn (string $word): bool => str_contains(trim($word), ' '));
+        $unwanted = [];
+
+        foreach ($array as $word) {
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->singleWordsIn($word));
+
+                continue;
+            }
+
+            if (str_contains(trim((string) $word), ' ')) {
+                $unwanted[] = $word;
+            }
+        }
+
+        return $unwanted;
     }
 }

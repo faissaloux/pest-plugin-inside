@@ -12,6 +12,11 @@ it('passes with not', function (): void {
         ->not->toReturnSingleWords();
 });
 
+it('passes when all nested arrays content is single words', function (): void {
+    expect('tests/Fixtures/returnsNestedSingleWords.php')
+        ->toReturnSingleWords();
+});
+
 it('passes when directory is empty', function (): void {
     expect('tests/Fixtures/empty')
         ->toReturnSingleWords();
@@ -31,6 +36,11 @@ it('fails with not', function (): void {
     expect('tests/Fixtures/returnsMultipleDuplicates.php')
         ->not->toReturnSingleWords();
 })->throws(ExpectationFailedException::class);
+
+it('fails when not all nested arrays content is single words', function (): void {
+    expect('tests/Fixtures/returnsNestedNotSingleWords.php')
+        ->toReturnSingleWords();
+})->throws(ExpectationFailedException::class, 'Not single words detected: plugin inside, not single word');
 
 it('fails when file does not exist', function (): void {
     expect('tests/Fixtures/notExist.php')
