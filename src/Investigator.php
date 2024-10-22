@@ -19,6 +19,11 @@ trait Investigator
                 continue;
             }
 
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->lowercasesIn($word));
+                continue;
+            }
+
             if (! ctype_lower(preg_replace('/[^A-Za-z]/', '', $word))) {
                 $unwanted[] = $word;
             }

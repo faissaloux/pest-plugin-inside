@@ -12,6 +12,11 @@ it('passes with not', function (): void {
         ->not->toReturnLowercase();
 });
 
+it('passes when all nested arrays content is lowercase', function (): void {
+    expect('tests/Fixtures/returnsNestedLowercase.php')
+        ->toReturnLowercase();
+});
+
 it('passes when directory is empty', function (): void {
     expect('tests/Fixtures/empty')
         ->toReturnLowercase();
@@ -30,6 +35,11 @@ it('fails', function (): void {
 it('fails with not', function (): void {
     expect('tests/Fixtures/returnsArrayOnlyLowercase.php')
         ->not->toReturnLowercase();
+})->throws(ExpectationFailedException::class);
+
+it('fails when not all nested arrays content is lowercase', function (): void {
+    expect('tests/Fixtures/returnsNestedNotAllLowercase.php')
+        ->toReturnLowercase();
 })->throws(ExpectationFailedException::class);
 
 it('fails when file does not exist', function (): void {
