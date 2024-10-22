@@ -7,7 +7,7 @@ namespace Faissaloux\PestInside;
 trait Investigator
 {
     /**
-     * @param  array<string>  $array
+     * @param  array<string|array<string>>  $array
      * @return array<string>
      */
     private function lowercasesIn(array $array): array
