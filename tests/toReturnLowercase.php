@@ -40,7 +40,7 @@ it('fails with not', function (): void {
 it('fails when not all nested arrays content is lowercase', function (): void {
     expect('tests/Fixtures/returnsNestedNotAllLowercase.php')
         ->toReturnLowercase();
-})->throws(ExpectationFailedException::class);
+})->throws(ExpectationFailedException::class, 'Not lowercase detected: inSide');
 
 it('fails when file does not exist', function (): void {
     expect('tests/Fixtures/notExist.php')
