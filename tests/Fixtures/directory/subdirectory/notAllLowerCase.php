@@ -11,4 +11,5 @@ return [
     'lowercase',
     'loWer',
     'case',
+    'nOt',
 ];

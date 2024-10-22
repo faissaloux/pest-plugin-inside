@@ -52,9 +52,9 @@ it('fails when not all subdirectories files content are lowercase', function ():
         ->toReturnLowercase();
 })->throws(ExpectationFailedException::class);
 
-it('displays word detected', function (): void {
+it('displays words detected', function (): void {
     expect('tests/Fixtures/directory')->toReturnLowercase();
-})->throws(ExpectationFailedException::class, 'Not lowercase word detected: loWer');
+})->throws(ExpectationFailedException::class, 'Not lowercase detected: loWer, nOt');
 
 it('displays file where error detected', function (): void {
     expect('tests/Fixtures/directory')->toReturnLowercase();

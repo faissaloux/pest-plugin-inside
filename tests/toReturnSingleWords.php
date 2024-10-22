@@ -59,7 +59,7 @@ it('displays word detected', function (): void {
 it('displays multiple not single words detected', function (): void {
     expect('tests/Fixtures/returnsDuplicates.php')
         ->toReturnSingleWords();
-})->throws(ExpectationFailedException::class, 'pest plugin,pest plugin inside');
+})->throws(ExpectationFailedException::class, 'pest plugin, pest plugin inside');
 
 it('displays file where error detected', function (): void {
     expect('tests/Fixtures/directory')->toReturnSingleWords();
