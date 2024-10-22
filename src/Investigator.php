@@ -49,7 +49,7 @@ trait Investigator
                 continue;
             }
 
-            if (!in_array($word, $unique)) {
+            if (! in_array($word, $unique)) {
                 $unique[] = $word;
             } else {
                 $unwanted[] = $word;
