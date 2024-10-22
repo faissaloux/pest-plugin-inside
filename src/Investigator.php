@@ -21,6 +21,7 @@ trait Investigator
 
             if (is_array($word)) {
                 array_push($unwanted, ...$this->lowercasesIn($word));
+
                 continue;
             }
 
