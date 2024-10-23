@@ -1,4 +1,12 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.4.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.5.0...main)
+
+## [v1.5.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.4.0...v1.5.0) - 2024-10-23
+
+### Added
+* Support nested arrays by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/12
+
+### Refactor
+* Refactor expectations by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/11
 
 ## [v1.4.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.3.0...v1.4.0) - 2024-10-17
 ### Added
