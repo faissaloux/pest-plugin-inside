@@ -18,17 +18,15 @@ trait Investigator
         $unwanted = [];
 
         foreach ($array as $word) {
-            if ($word === '') {
-                continue;
-            }
-
             if (is_array($word)) {
                 array_push($unwanted, ...$this->notLowercasesIn($word));
 
                 continue;
             }
 
-            if (! ctype_lower(preg_replace('/[^A-Za-z]/', '', $word))) {
+            $clean = preg_replace('/[^A-Za-z]/', '', $word);
+
+            if ($clean !== '' && ! ctype_lower($clean)) {
                 $unwanted[] = $word;
             }
         }
