@@ -26,11 +26,7 @@ trait Investigator
 
             $clean = preg_replace('/[^A-Za-z]/', '', $word);
 
-            if ($clean == '') {
-                continue;
-            }
-
-            if (! ctype_lower($clean)) {
+            if ($clean !== '' && ! ctype_lower($clean)) {
                 $unwanted[] = $word;
             }
         }
