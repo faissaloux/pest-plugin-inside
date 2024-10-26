@@ -12,7 +12,7 @@ final class Expectation extends Inside
     {
         $this->applyOnDirectory(
             $depth,
-            fn (array $content): array => $this->lowercasesIn($content),
+            fn (array $content): array => $this->notLowercasesIn($content),
             'Not lowercase detected'
         );
     }
@@ -30,7 +30,7 @@ final class Expectation extends Inside
     {
         $this->applyOnDirectory(
             $depth,
-            fn (array $content): array => $this->singleWordsIn($content),
+            fn (array $content): array => $this->multipleWordsIn($content),
             'Not single words detected'
         );
     }
