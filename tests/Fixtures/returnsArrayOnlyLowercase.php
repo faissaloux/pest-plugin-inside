@@ -13,4 +13,5 @@ return [
     'lowercase',
     'lower',
     'case',
+    'العربية',
 ];
