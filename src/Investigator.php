@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Faissaloux\PestInside;
 
+/**
+ * @internal
+ */
 trait Investigator
 {
     /**
      * @param  array<string|array<string>>  $array
      * @return array<string>
      */
-    private function lowercasesIn(array $array): array
+    private function notLowercasesIn(array $array): array
     {
         $unwanted = [];
 
@@ -20,7 +23,7 @@ trait Investigator
             }
 
             if (is_array($word)) {
-                array_push($unwanted, ...$this->lowercasesIn($word));
+                array_push($unwanted, ...$this->notLowercasesIn($word));
 
                 continue;
             }
@@ -63,13 +66,13 @@ trait Investigator
      * @param  array<string|array<string>>  $array
      * @return array<string>
      */
-    private function singleWordsIn(array $array): array
+    private function multipleWordsIn(array $array): array
     {
         $unwanted = [];
 
         foreach ($array as $word) {
             if (is_array($word)) {
-                array_push($unwanted, ...$this->singleWordsIn($word));
+                array_push($unwanted, ...$this->multipleWordsIn($word));
 
                 continue;
             }
