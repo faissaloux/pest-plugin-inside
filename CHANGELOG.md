@@ -1,7 +1,13 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.5.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.5.1...main)
+
+## [v1.5.1](https://github.com/faissaloux/pest-plugin-inside/compare/v1.5.0...v1.5.1) - 2024-10-26
+### Fixed
+* Fix arabic lowercase by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/14
+
+### Refactor
+* Rename Investigator methods by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/13
 
 ## [v1.5.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.4.0...v1.5.0) - 2024-10-23
-
 ### Added
 * Support nested arrays by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/12
 
@@ -17,7 +23,6 @@
 ### Refactor
 * Refactor expectations by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/8
 
-
 ## [v1.3.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.2.0...v1.3.0) - 2024-10-13
 ### Added
 * Scan deep directories by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/4
@@ -25,7 +30,6 @@
 
 ### Tests
 * helpers tests by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/6
-
 
 ## [v1.2.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.1.0...v1.2.0) - 2024-10-10
 ### Added
