@@ -34,4 +34,13 @@ final class Expectation extends Inside
             'Not single words detected'
         );
     }
+
+    public function toBeOrdered(int $depth = -1): void
+    {
+        $this->applyOnDirectory(
+            $depth,
+            fn (array $content): array => $this->dataNotOrderedIn($content),
+            'Your data is not ordered'
+        );
+    }
 }

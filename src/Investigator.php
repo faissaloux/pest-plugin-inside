@@ -82,4 +82,44 @@ trait Investigator
 
         return $unwanted;
     }
+
+    /**
+     * @param  array<string|array<string>>  $array
+     * @return array<string>
+     */
+    private function dataNotOrderedIn(array $array): array
+    {
+        if (count($array) < 2) {
+            return [];
+        }
+
+        $unwanted = [];
+        $lastWord = $array[0];
+
+        foreach ($array as $key => $value) {
+            if ($key === 0) {
+                continue;
+            }
+
+            $currentWord = $value;
+            if (is_array($currentWord) && is_string($lastWord)) {
+                if ($lastWord > $key) {
+                    $unwanted[] = "$lastWord <=> $key";
+                }
+                $lastWord = $key;
+
+                array_push($unwanted, ...$this->dataNotOrderedIn($currentWord));
+
+                continue;
+            }
+
+            if (is_string($currentWord) && is_string($lastWord) && $lastWord > $currentWord) {
+                $unwanted[] = "$lastWord <=> $currentWord";
+            }
+
+            $lastWord = $currentWord;
+        }
+
+        return $unwanted;
+    }
 }
