@@ -82,4 +82,23 @@ trait Investigator
 
         return $unwanted;
     }
+
+    /**
+     * @param  array<string|array<string>>  $array
+     * @return array<string>
+     */
+    private function dataNotOrderedIn(array $array): array
+    {
+        $unwanted = [];
+        $word = $array[0];
+
+        for ($index = 1; $index < count($array); $index++) {
+            if ($word > $array[$index]) {
+                $unwanted[] = "$word <=> $array[$index]";
+            }
+            $word = $array[$index];
+        }
+
+        return $unwanted;
+    }
 }
