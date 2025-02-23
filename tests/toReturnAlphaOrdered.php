@@ -15,7 +15,7 @@ it('passes with not', function (): void {
 it('passes when all nested arrays content is ordered', function (): void {
     expect('tests/Fixtures/alphaOrder/nestedArrayOrdered.php')
         ->toBeOrdered();
-})->only();
+});
 
 it('fails', function (): void {
     expect('tests/Fixtures/alphaOrder/arrayNotOrdered.php')
