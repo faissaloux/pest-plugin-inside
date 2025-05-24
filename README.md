@@ -30,6 +30,12 @@ Make sure a file or directory files returns an array with words that are ordered
 expect('file.php')->toBeOrdered();
 ```
 
+### toReturnStrings
+Make sure a file or directory files returns only string values.
+```php
+expect('file.php')->toReturnStrings();
+```
+
 ----
 
 ### Success

@@ -122,4 +122,27 @@ trait Investigator
 
         return $unwanted;
     }
+
+    /**
+     * @param  array<string|array<string>>  $array
+     * @return array<string>
+     */
+    private function notStringsIn(array $array): array
+    {
+        $unwanted = [];
+
+        foreach ($array as $word) {
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->notStringsIn($word));
+
+                continue;
+            }
+
+            if (! is_string($word)) {
+                $unwanted[] = $word;
+            }
+        }
+
+        return $unwanted;
+    }
 }
