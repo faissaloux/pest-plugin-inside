@@ -5,6 +5,14 @@ This plugin checks what's inside the files.
 
 [![Tests](https://github.com/faissaloux/pest-plugin-inside/actions/workflows/tests.yml/badge.svg)](https://github.com/faissaloux/pest-plugin-inside/actions/workflows/tests.yml) ![Codecov](https://img.shields.io/codecov/c/github/faissaloux/pest-plugin-inside) ![Packagist Version](https://img.shields.io/packagist/v/faissaloux/pest-plugin-inside) ![Packagist License](https://img.shields.io/packagist/l/faissaloux/pest-plugin-inside)
 
+## Requirements
+
+| pest                | php     | pest-plugin-inside     |
+| ------------------- | ------- | ---------------------- |
+| ^2.14               | ^8.1    | ^1.0.0                 |
+| ^3.0                | ^8.2    | ^1.2.0                 |
+| ^4.0                | ^8.3    | ^1.7.0                 |
+
 ## Available Expectations
 ### toReturnLowercase
 Make sure a file or directory files returns an array with all lowercase values.
