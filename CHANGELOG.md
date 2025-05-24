@@ -1,4 +1,9 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.6.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.7.0...main)
+
+## [v1.7.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.6.0...v1.7.0) - 2025-05-24
+### Added
+* Support pest4 by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/17
+* `toReturnStrings()` by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/16
 
 ## [v1.6.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.5.1...v1.6.0) - 2025-02-23
 ### Added
