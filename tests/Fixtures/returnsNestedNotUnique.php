@@ -12,6 +12,7 @@ return [
         'pest',
         'inSide',
         'pest',
+        1,
     ],
     'plugin',
     'inside',

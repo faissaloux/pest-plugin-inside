@@ -43,4 +43,13 @@ final class Expectation extends Inside
             'Your data is not ordered'
         );
     }
+
+    public function toReturnStrings(int $depth = -1): void
+    {
+        $this->applyOnDirectory(
+            $depth,
+            fn (array $content): array => $this->notStringsIn($content),
+            'Not string detected'
+        );
+    }
 }
