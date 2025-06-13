@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.7.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.8.0...main)
+
+## [v1.8.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.7.0...v1.8.0) - 2025-06-13
+### Added
+* Support text files by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/18
 
 ## [v1.7.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.6.0...v1.7.0) - 2025-05-24
 ### Added
