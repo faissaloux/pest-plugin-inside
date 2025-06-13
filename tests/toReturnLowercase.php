@@ -37,7 +37,7 @@ it('fails', function (string $text): void {
     'tests/Fixtures/returnsArrayLowercaseWithUppercase.php',
     'tests/Fixtures/text/returnsArrayLowercaseWithUppercase.stub',
 ])
-->throws(ExpectationFailedException::class);
+    ->throws(ExpectationFailedException::class);
 
 it('fails with not', function (string $text): void {
     expect($text)->not->toReturnLowercase();

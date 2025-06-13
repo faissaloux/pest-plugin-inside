@@ -10,7 +10,8 @@ final class Content implements ContentContract
 {
     public string $source;
 
-    public function __construct(private string $file) {
+    public function __construct(private string $file)
+    {
         $this->source = pathinfo($this->file, PATHINFO_EXTENSION);
     }
 
