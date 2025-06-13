@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace Faissaloux\PestInside;
 
+use Faissaloux\PestInside\Contracts\Content;
+
 /**
  * @internal
  */
 trait Investigator
 {
     /**
-     * @param  array<string|array<string>>  $array
+     * @param  Content|array<int|string, string|array<string, string>>  $content
      * @return array<string>
      */
-    private function notLowercasesIn(array $array): array
+    private function notLowercasesIn(Content|array $content): array
     {
         $unwanted = [];
 
-        foreach ($array as $word) {
+        foreach ($content as $word) {
             if (is_array($word)) {
                 array_push($unwanted, ...$this->notLowercasesIn($word));
 
@@ -35,15 +37,15 @@ trait Investigator
     }
 
     /**
-     * @param  array<string|array<string>>  $array
+     * @param  Content|array<int|string, string|array<string, string>>  $content
      * @return array<string>
      */
-    private function duplicatesIn(array $array): array
+    private function duplicatesIn(Content|array $content): array
     {
         $unwanted = [];
         $unique = [];
 
-        foreach ($array as $word) {
+        foreach ($content as $word) {
             if (is_array($word)) {
                 array_push($unwanted, ...$this->duplicatesIn($word));
 
@@ -61,14 +63,14 @@ trait Investigator
     }
 
     /**
-     * @param  array<string|array<string>>  $array
+     * @param  Content|array<int|string, string|array<string, string>>  $content
      * @return array<string>
      */
-    private function multipleWordsIn(array $array): array
+    private function multipleWordsIn(Content|array $content): array
     {
         $unwanted = [];
 
-        foreach ($array as $word) {
+        foreach ($content as $word) {
             if (is_array($word)) {
                 array_push($unwanted, ...$this->multipleWordsIn($word));
 
@@ -84,19 +86,19 @@ trait Investigator
     }
 
     /**
-     * @param  array<string|array<string>>  $array
+     * @param  Content|array<int|string, string|array<string, string>>  $content
      * @return array<string>
      */
-    private function dataNotOrderedIn(array $array): array
+    private function dataNotOrderedIn(Content|array $content): array
     {
-        if (count($array) < 2) {
+        if (count($content) < 2) {
             return [];
         }
 
         $unwanted = [];
-        $lastWord = $array[0];
+        $lastWord = $content[0];
 
-        foreach ($array as $key => $value) {
+        foreach ($content as $key => $value) {
             if ($key === 0) {
                 continue;
             }
@@ -124,14 +126,18 @@ trait Investigator
     }
 
     /**
-     * @param  array<string|array<string>>  $array
+     * @param  Content|array<int|string, string|array<string, string>>  $content
      * @return array<string>
      */
-    private function notStringsIn(array $array): array
+    private function notStringsIn(Content|array $content): array
     {
+        if ($content instanceof Content && ($extension = $content->getExtension()) !== 'php') {
+            throw new NotSupported("toReturnStrings is not supported on $extension files.");
+        }
+
         $unwanted = [];
 
-        foreach ($array as $word) {
+        foreach ($content as $word) {
             if (is_array($word)) {
                 array_push($unwanted, ...$this->notStringsIn($word));
 

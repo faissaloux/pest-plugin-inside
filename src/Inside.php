@@ -48,7 +48,7 @@ class Inside
         foreach ($this->files as $file) {
             $this->checkFileExistence($file);
 
-            $content = (new Content($file))->get();
+            $content = new Content($file);
 
             $unwanted = $callback($content);
 

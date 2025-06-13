@@ -50,12 +50,15 @@ it('fails when not all nested arrays content is single words', function (): void
         ->toReturnSingleWords();
 })->throws(ExpectationFailedException::class, 'Not single words detected: plugin inside, not single word');
 
-it('fails when file does not exist', function (string $file): void {
-    expect($file)->toReturnSingleWords();
-})->with([
-    'tests/Fixtures/notExist.php',
-    'tests/Fixtures/text/notExist.stub',
-])->throws(ExpectationFailedException::class, "$file not found");
+describe('fails when file does not exist', function (): void {
+    it('php file', function (): void {
+        expect('tests/Fixtures/notExist.php')->toReturnSingleWords();
+    })->throws(ExpectationFailedException::class, 'tests/Fixtures/notExist.php not found');
+
+    it('text file', function (): void {
+        expect('tests/Fixtures/text/notExist.stub')->toReturnSingleWords();
+    })->throws(ExpectationFailedException::class, 'tests/Fixtures/text/notExist.stub not found');
+});
 
 it('fails when directory does not exist', function (string $directory): void {
     expect($directory)->toReturnSingleWords();

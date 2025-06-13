@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace Faissaloux\PestInside\Contracts;
 
-interface Content
+use ArrayAccess;
+use Countable;
+use IteratorAggregate;
+
+/**
+ * @extends IteratorAggregate<int|string, string|array<string, string>>
+ * @extends ArrayAccess<int|string, string|array<string, string>>
+ */
+interface Content extends ArrayAccess, Countable, IteratorAggregate
 {
-    /**
-     * @return array<int, string|array<string>>
-     */
-    public function get(): array;
+    public function getExtension(): string;
 }

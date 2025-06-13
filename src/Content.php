@@ -4,29 +4,64 @@ declare(strict_types=1);
 
 namespace Faissaloux\PestInside;
 
+use ArrayIterator;
 use Faissaloux\PestInside\Contracts\Content as ContentContract;
+use Traversable;
 
 final class Content implements ContentContract
 {
-    public string $source;
+    /**
+     * @var array<int|string, string|array<string, string>>
+     */
+    private array $content = [];
+
+    private string $extension;
 
     public function __construct(private string $file)
     {
-        $this->source = pathinfo($this->file, PATHINFO_EXTENSION);
+        $this->extension = pathinfo($this->file, PATHINFO_EXTENSION);
+
+        $this->content = $this->extension === 'php'
+            ? include $this->file
+            : explode("\n", file_get_contents($this->file) ?: '');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function get(): array
+    public function getExtension(): string
     {
-        if ($this->source === 'php') {
-            $content = include $this->file;
-        } else {
-            $content = file_get_contents($this->file);
-            $content = explode("\n", $content ?: '');
-        }
+        return $this->extension;
+    }
 
-        return $content;
+    public function count(): int
+    {
+        return count($this->content);
+    }
+
+    public function getIterator(): Traversable
+    {
+        return new ArrayIterator($this->content);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->content[$offset]);
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->content[$offset];
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        if (is_null($offset)) {
+            $this->content[] = $value;
+        } else {
+            $this->content[$offset] = $value;
+        }
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        unset($this->content[$offset]);
     }
 }

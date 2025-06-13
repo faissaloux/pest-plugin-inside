@@ -50,12 +50,15 @@ it('fails when not all nested arrays content is unique', function (): void {
         ->toReturnUnique();
 })->throws(ExpectationFailedException::class, 'Duplicates detected: pest, inside');
 
-it('fails when file does not exist', function (string $file): void {
-    expect($file)->toReturnUnique();
-})->with([
-    'tests/Fixtures/notExist.php',
-    'tests/Fixtures/text/notExist.stub',
-])->throws(ExpectationFailedException::class, "$file not found");
+describe('fails when file does not exist', function (): void {
+    test('php file', function (): void {
+        expect('tests/Fixtures/notExist.php')->toReturnUnique();
+    })->throws(ExpectationFailedException::class, 'tests/Fixtures/notExist.php not found');
+
+    test('text file', function (): void {
+        expect('tests/Fixtures/notExist.stub')->toReturnUnique();
+    })->throws(ExpectationFailedException::class, 'tests/Fixtures/notExist.stub not found');
+});
 
 it('fails when directory does not exist', function (): void {
     expect('tests/Fixtures/notExist')
@@ -86,9 +89,12 @@ it('displays multiple found duplicates', function (string $file): void {
     'tests/Fixtures/text/returnsMultipleDuplicates.stub',
 ])->throws(ExpectationFailedException::class, '1, duplicate');
 
-it('displays file where duplicate found', function ($file): void {
-    expect($file)->toReturnUnique();
-})->with([
-    'tests/Fixtures/returnsDuplicates.php',
-    'tests/Fixtures/text/returnsDuplicates.stub',
-])->throws(ExpectationFailedException::class, $file);
+describe('displays file where duplicate found', function (): void {
+    test('php file', function (): void {
+        expect('tests/Fixtures/returnsDuplicates.php')->toReturnUnique();
+    })->throws(ExpectationFailedException::class, 'tests/Fixtures/returnsDuplicates.php');
+
+    test('text file', function (): void {
+        expect('tests/Fixtures/returnsDuplicates.stub')->toReturnUnique();
+    })->throws(ExpectationFailedException::class, 'tests/Fixtures/returnsDuplicates.stub');
+});
