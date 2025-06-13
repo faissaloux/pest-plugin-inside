@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Faissaloux\PestInside;
 
+use Faissaloux\PestInside\Contracts\Content;
+
 final class Expectation extends Inside
 {
     use Investigator;
@@ -12,7 +14,7 @@ final class Expectation extends Inside
     {
         $this->applyOnDirectory(
             $depth,
-            fn (array $content): array => $this->notLowercasesIn($content),
+            fn (Content $content): array => $this->notLowercasesIn($content),
             'Not lowercase detected'
         );
     }
@@ -21,7 +23,7 @@ final class Expectation extends Inside
     {
         $this->applyOnDirectory(
             $depth,
-            fn (array $content): array => $this->duplicatesIn($content),
+            fn (Content $content): array => $this->duplicatesIn($content),
             'Duplicates detected'
         );
     }
@@ -30,7 +32,7 @@ final class Expectation extends Inside
     {
         $this->applyOnDirectory(
             $depth,
-            fn (array $content): array => $this->multipleWordsIn($content),
+            fn (Content $content): array => $this->multipleWordsIn($content),
             'Not single words detected'
         );
     }
@@ -39,7 +41,7 @@ final class Expectation extends Inside
     {
         $this->applyOnDirectory(
             $depth,
-            fn (array $content): array => $this->dataNotOrderedIn($content),
+            fn (Content $content): array => $this->dataNotOrderedIn($content),
             'Your data is not ordered'
         );
     }
@@ -48,7 +50,7 @@ final class Expectation extends Inside
     {
         $this->applyOnDirectory(
             $depth,
-            fn (array $content): array => $this->notStringsIn($content),
+            fn (Content $content): array => $this->notStringsIn($content),
             'Not string detected'
         );
     }

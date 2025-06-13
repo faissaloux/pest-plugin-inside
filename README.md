@@ -13,6 +13,11 @@ This plugin checks what's inside the files.
 | ^3.0                | ^8.2    | ^1.2.0                 |
 | ^4.0                | ^8.3    | ^1.7.0                 |
 
+## Supported files
+- php
+- txt
+- stub
+
 ## Available Expectations
 ### toReturnLowercase
 Make sure a file or directory files returns an array with all lowercase values.
