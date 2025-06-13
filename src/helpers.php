@@ -1,8 +1,10 @@
 <?php
 
-function isDirOrPhp(string $maybeFile): bool
+function isDirOrSupportedFile(string $maybeFile): bool
 {
-    return isDir($maybeFile) || isPhp($maybeFile);
+    return isDir($maybeFile)
+        || isPhp($maybeFile)
+        || isText($maybeFile);
 }
 
 function isDir(string $maybeDir): bool
@@ -17,6 +19,13 @@ function isPhp(string $file): bool
     return end($exploded) === 'php';
 }
 
+function isText(string $file): bool
+{
+    $exploded = explode('.', $file);
+
+    return end($exploded) === 'txt' || end($exploded) === 'stub';
+}
+
 /**
  * @return array<string>
  */
@@ -26,7 +35,7 @@ function getFilesIn(string $directory, int $depth = -1): array
 
     if ($files = scandir($directory)) {
         $files = array_diff($files, ['.', '..']);
-        $files = array_filter($files, 'isDirOrPhp');
+        $files = array_filter($files, 'isDirOrSupportedFile');
 
         foreach ($files as $file) {
             if (isDir($file)) {

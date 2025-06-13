@@ -3,13 +3,13 @@
 uses()->group('helpers');
 
 it('returns true when is dir', function (): void {
-    expect(isDirOrPhp('directory'))->toBeTrue();
+    expect(isDirOrSupportedFile('directory'))->toBeTrue();
 });
 
-it('returns false when is php file', function (): void {
-    expect(isDirOrPhp('file.php'))->toBeTrue();
-});
+it('returns false when is supported file', function (string $file): void {
+    expect(isDirOrSupportedFile($file))->toBeTrue();
+})->with(['file.php', 'file.txt', 'file.stub']);
 
-it('returns false when is not php file', function (): void {
-    expect(isDirOrPhp('file.js'))->toBeFalse();
+it('returns false when is not supported file', function (): void {
+    expect(isDirOrSupportedFile('file.js'))->toBeFalse();
 });

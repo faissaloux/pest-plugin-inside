@@ -33,18 +33,6 @@ class Inside
     }
 
     /**
-     * @return array<string>
-     */
-    protected function getContentFrom(string $file): array
-    {
-        $content = include $file;
-
-        expect($content)->toBeArray();
-
-        return $content;
-    }
-
-    /**
      * @return PestExpectation<string>
      */
     protected function applyOnDirectory(int $depth, callable $callback, string $message): PestExpectation
@@ -60,7 +48,7 @@ class Inside
         foreach ($this->files as $file) {
             $this->checkFileExistence($file);
 
-            $content = $this->getContentFrom($file);
+            $content = (new Content($file))->get();
 
             $unwanted = $callback($content);
 
