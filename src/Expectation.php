@@ -19,6 +19,15 @@ final class Expectation extends Inside
         );
     }
 
+    public function toReturnUppercase(int $depth = -1): void
+    {
+        $this->applyOnDirectory(
+            $depth,
+            fn (Content $content): array => $this->notUppercasesIn($content),
+            'Not uppercase detected'
+        );
+    }
+
     public function toReturnUnique(int $depth = -1): void
     {
         $this->applyOnDirectory(

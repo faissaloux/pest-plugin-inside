@@ -40,6 +40,31 @@ trait Investigator
      * @param  Content|array<int|string, string|array<string, string>>  $content
      * @return array<string>
      */
+    private function notUppercasesIn(Content|array $content): array
+    {
+        $unwanted = [];
+
+        foreach ($content as $word) {
+            if (is_array($word)) {
+                array_push($unwanted, ...$this->notUppercasesIn($word));
+
+                continue;
+            }
+
+            $clean = preg_replace('/[^A-Za-z]/', '', $word);
+
+            if ($clean !== '' && ! ctype_upper($clean)) {
+                $unwanted[] = $word;
+            }
+        }
+
+        return $unwanted;
+    }
+
+    /**
+     * @param  Content|array<int|string, string|array<string, string>>  $content
+     * @return array<string>
+     */
     private function duplicatesIn(Content|array $content): array
     {
         $unwanted = [];
