@@ -23,7 +23,7 @@ final class Content implements ContentContract
 
         $this->content = $this->extension === 'php'
             ? include $this->file
-            : explode("\n", file_get_contents($this->file) ?: '');
+            : explode(PHP_EOL, file_get_contents($this->file) ?: '');
     }
 
     public function getExtension(): string
