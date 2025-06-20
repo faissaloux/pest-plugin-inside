@@ -63,4 +63,13 @@ final class Expectation extends Inside
             'Not string detected'
         );
     }
+
+    public function forbidEmpty(int $depth = -1): void
+    {
+        $this->applyOnDirectory(
+            $depth,
+            fn (Content $content): bool => $this->emptyIn($content),
+            'Empty value detected'
+        );
+    }
 }
