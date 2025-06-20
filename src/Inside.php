@@ -52,7 +52,11 @@ class Inside
 
             $unwanted = $callback($content);
 
-            expect($unwanted)->toBeEmpty("$message: ".implode(', ', $unwanted)." in $file");
+            if (is_array($unwanted)) {
+                expect($unwanted)->toBeEmpty("$message: ".implode(', ', $unwanted)." in $file");
+            } else {
+                expect($unwanted)->toBeTrue($message);
+            }
         }
 
         return new PestExpectation($this->value);

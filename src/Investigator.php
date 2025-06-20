@@ -176,4 +176,24 @@ trait Investigator
 
         return $unwanted;
     }
+
+    /**
+     * @param  Content|array<int|string, string|array<string, string>>  $content
+     */
+    private function emptyIn(Content|array $content): bool
+    {
+        foreach ($content as $word) {
+            if (is_array($word)) {
+                $this->emptyIn($word);
+
+                continue;
+            }
+
+            if ($word == '') {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

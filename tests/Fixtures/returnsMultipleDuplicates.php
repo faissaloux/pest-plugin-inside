@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 return [
-    '',
     'f@issa!oux',
     1,
     'pest',
