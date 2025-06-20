@@ -25,6 +25,12 @@ Make sure a file or directory files returns an array with all lowercase values.
 expect('file.php')->toReturnLowercase();
 ```
 
+### toReturnUppercase
+Make sure a file or directory files returns an array with all uppercase values.
+```php
+expect('file.php')->toReturnUppercase();
+```
+
 ### toReturnUnique
 Make sure a file or directory files returns an array with unique values.
 ```php
