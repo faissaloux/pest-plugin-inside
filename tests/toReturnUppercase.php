@@ -13,6 +13,7 @@ it('passes with not', function (string $file): void {
     expect($file)->not->toReturnUppercase();
 })->with([
     'tests/Fixtures/returnsArrayLowercaseWithUppercase.php',
+    'tests/Fixtures/returnsArrayOnlyLowercase.php',
     'tests/Fixtures/text/returnsArrayLowercaseWithUppercase.stub',
 ]);
 
