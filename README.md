@@ -55,6 +55,12 @@ Make sure a file or directory files returns only string values.
 expect('file.php')->toReturnStrings();
 ```
 
+### forbidEmpty
+Make sure a file or directory files does not return any empty value.
+```php
+expect('file.php')->forbidEmpty();
+```
+
 ----
 
 ### Success
