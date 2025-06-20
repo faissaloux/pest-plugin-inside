@@ -1,4 +1,12 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.8.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.9.0...main)
+
+## [v1.9.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.8.0...v1.9.0) - 2025-06-20
+### Added
+* `forbidEmpty()` by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/21
+* `toReturnUppercase()` by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/20
+
+### Fixed
+* Fix reading text files on Windows by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/19
 
 ## [v1.8.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.7.0...v1.8.0) - 2025-06-13
 ### Added
