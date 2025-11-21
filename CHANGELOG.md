@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.9.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.10.0...main)
+
+## [v1.10.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.9.0...v1.10.0) - 2025-11-21
+### Added
+* `php8.5` support by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/22
 
 ## [v1.9.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.8.0...v1.9.0) - 2025-06-20
 ### Added
