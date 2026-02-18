@@ -4,4 +4,7 @@ parameters:
         - src
 
     ignoreErrors:
-        - "#Undefined variable: \\$this#"
+        -
+            message: '#^Parameter \#1 \$value of class Faissaloux\\PestInside\\Expectation constructor expects string, null given#'
+            count: 1
+            path: src/Autoload.php
