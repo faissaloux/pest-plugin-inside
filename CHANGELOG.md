@@ -1,4 +1,15 @@
-## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.10.0...main)
+## [Unreleased](https://github.com/faissaloux/pest-plugin-inside/compare/v1.11.0...main)
+
+## [v1.11.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.10.0...v1.11.0) - 2026-05-24
+### Added
+* Add pest 5 support by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/faissaloux/pest-plugin-inside/pull/24
+
+### CHANGED
+* Drop `php8.1` by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/25
+* ci: bump github action actions/checkout 2 => 6 by [@Chris53897](https://github.com/Chris53897) in https://github.com/faissaloux/pest-plugin-inside/pull/23
+
+### Fixed
+* Fix codecov upload by [@faissaloux](https://github.com/faissaloux) in https://github.com/faissaloux/pest-plugin-inside/pull/26
 
 ## [v1.10.0](https://github.com/faissaloux/pest-plugin-inside/compare/v1.9.0...v1.10.0) - 2025-11-21
 ### Added
