@@ -16,6 +16,7 @@ This plugin checks what's inside the files.
 | ^2.14               | ^8.1    | ^1.0.0                 |
 | ^3.0                | ^8.2    | ^1.2.0                 |
 | ^4.0                | ^8.3    | ^1.7.0                 |
+| ^5.0                | ^8.4    | ^1.11.0                |
 
 ## Supported files
 - php
